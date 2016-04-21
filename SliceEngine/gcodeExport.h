@@ -23,6 +23,7 @@ private:
     double extruderSwitchRetraction;
     double minimalExtrusionBeforeRetraction;
     double extrusionAmountAtPreviousRetraction;
+    double gcodeScale;
     Point3 currentPosition;
     Pointc extruderOffset[MAX_EXTRUDERS];
     char extruderCharacter[MAX_EXTRUDERS];

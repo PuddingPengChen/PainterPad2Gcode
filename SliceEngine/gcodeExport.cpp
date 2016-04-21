@@ -26,6 +26,7 @@ GCodeExport::GCodeExport()
     extruderNr = 0;
     currentFanSpeed = -1;
     
+     gcodeScale = 2.0;
     totalPrintTime = 0.0;
     for(unsigned int e=0; e<MAX_EXTRUDERS; e++)
         totalFilament[e] = 0.0;
@@ -222,7 +223,7 @@ void GCodeExport::writeMove(Pointc p, int speed, int lineWidth)
                 isRetracted = true;
             }
         }
-        fprintf(f, "G1 X%0.2f Y%0.2f Z%0.2f F%0.1f\n", INT2MM(p.X - extruderOffset[extruderNr].X), INT2MM(p.Y - extruderOffset[extruderNr].Y), INT2MM(zPos), fspeed);
+        fprintf(f, "G1 X%0.2f Y%0.2f Z%0.2f F%0.1f\n", INT2MM(p.X - extruderOffset[extruderNr].X)/gcodeScale, INT2MM(p.Y - extruderOffset[extruderNr].Y)/gcodeScale, INT2MM(zPos), fspeed);
     }else{
         
         //Normal E handling.

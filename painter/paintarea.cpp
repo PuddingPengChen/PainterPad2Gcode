@@ -42,6 +42,7 @@ bool PaintArea::openImage(const QString &fileName)
     }
     else
       loadedImage_scaled =  loadedImage;
+    loadedImage_scaled.save("print.png","PNG",100);
     _size_x = loadedImage_scaled.width();
     _size_y = loadedImage_scaled.height();
     resize(_size_x, _size_y);
