@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Welcom</class>
+ <widget class="QMainWindow" name="Welcom">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Welcom</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame
+{
+	
+	
+}
+QPushButton
+{
+	
+	background-color: rgba(255, 245, 131, 130);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">QFrame
+{
+	
+	background-color: rgb(255, 255, 255);
+	border:1px solid black;
+	border-radius:12px;
+}
+QPushButton
+{
+	
+	font: 75 14pt &quot;华康娃娃体W5(P)&quot;;
+	
+	color: rgb(133, 145, 255);
+	background-color: rgba(145,111, 155, 53);
+	border:none;
+	border-radius:8px;
+}
+QPushButton:pressed
+{
+	
+	background-color: rgba(145,111, 155, 83);
+	border:none;
+	border-radius:8px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="closeBtn">
+       <property name="geometry">
+        <rect>
+         <x>860</x>
+         <y>70</y>
+         <width>75</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Quit</string>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame_2">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>130</y>
+         <width>471</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame
+{
+	border:1px solid black;
+	border-radius:12px;
+}</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QPushButton" name="parentSetting">
+        <property name="geometry">
+         <rect>
+          <x>106</x>
+          <y>280</y>
+          <width>261</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Setting</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="connectIP">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>95</y>
+          <width>321</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Connect XY-Draw</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ipaint">
+        <property name="geometry">
+         <rect>
+          <x>111</x>
+          <y>189</y>
+          <width>251</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Painter</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

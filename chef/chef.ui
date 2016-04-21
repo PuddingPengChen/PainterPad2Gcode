@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>chef</class>
+ <widget class="QWidget" name="chef">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>688</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,4">
+   <item>
+    <widget class="QFrame" name="title">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="back">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>75</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>返回</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>101</x>
+        <y>14</y>
+        <width>351</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+	
+	font: 75 24pt &quot;华文彩云&quot;;
+	
+	color: rgb(255, 224, 44);
+	
+	background-color: rgb(255, 112, 76);
+
+}</string>
+      </property>
+      <property name="text">
+       <string>xxx的面包坊</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="contents">
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	
+	color: rgb(249, 71, 255);
+	font: 75 16pt &quot;华文琥珀&quot;;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="first">
+      <property name="geometry">
+       <rect>
+        <x>147</x>
+        <y>41</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>第一步</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="second">
+      <property name="geometry">
+       <rect>
+        <x>148</x>
+        <y>111</y>
+        <width>79</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>第二步</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="third">
+      <property name="geometry">
+       <rect>
+        <x>147</x>
+        <y>181</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>第三步</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>247</x>
+        <y>47</y>
+        <width>149</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>打开一张图片</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>247</x>
+        <y>116</y>
+        <width>104</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>修整图片</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>247</x>
+        <y>182</y>
+        <width>134</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>制作个性面包</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

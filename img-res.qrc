@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/erase.png</file>
+        <file>img/dot.png</file>
+        <file>img/draw.jpg</file>
+        <file>img/firstpage.jpg</file>
+        <file>img/param.jpg</file>
+        <file>img/parentsetting.jpg</file>
+        <file>img/settting.jpg</file>
+    </qresource>
+</RCC>
