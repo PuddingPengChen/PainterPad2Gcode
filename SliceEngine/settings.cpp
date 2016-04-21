@@ -106,8 +106,9 @@ ConfigSettings::ConfigSettings()
 
 
     endCode =
-       "M4 P0\n"
-        "G28 X Y \n "
+
+        "G28 X Y\n "
+        "M4 P0\n"
         ";end";
 }
 void ConfigSettings::setSliceConfig(std::string speed,std::string excluder,std::string zvalue,std::string temps)

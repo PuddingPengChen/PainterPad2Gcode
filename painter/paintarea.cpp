@@ -42,8 +42,10 @@ bool PaintArea::openImage(const QString &fileName)
     }
     else
       loadedImage_scaled =  loadedImage;
+    loadedImage_scaled.save("print.png","PNG",100);
     _size_x = loadedImage_scaled.width();
     _size_y = loadedImage_scaled.height();
+    qDebug()<<tr("_size_x = %1").arg(_size_x);
     resize(_size_x, _size_y);
     setMinimumSize(_size_x, _size_y);
     setMaximumSize(_size_x, _size_y);

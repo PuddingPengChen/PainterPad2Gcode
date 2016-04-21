@@ -195,11 +195,10 @@ void iPainter::on_save_clicked()
 void iPainter::on_paintfood_clicked() //一键打印
 {
     //保存图片
-    ui->painter_area->saveImage("print.png", "PNG");
+    //ui->painter_area->saveImage("print.png", "PNG");
     //图片转换成stl
     //图片切片
     //保存gcode
-
 
     ui->label->setText("正在处理...");
     ui->label->repaint();
@@ -211,23 +210,20 @@ void iPainter::on_paintfood_clicked() //一键打印
     po.append("print.png");
     po.append("temp.stl");
 
-    po.append("invert");
+//    po.append("invert");
 
     //po.append("noinvert");
     QTime time;
-
     time.start();
-
-
     Enable_User_Waiting_Cursor();
-    po.append("130");
+//    po.append("130");
 //    if(free->execute("./load/load.exe",po))
     QStringList pp;
     pp.append("./python/load.py");
     pp.append("print.png");
     pp.append("temp.stl");
     pp.append("invert");
-    pp.append("150");
+    pp.append("130");
      if(free->execute("./python/python.exe",pp))
     {
         qDebug()<<"load finished!!";
@@ -238,7 +234,6 @@ void iPainter::on_paintfood_clicked() //一键打印
     QString direct = "print.gcode";
     QByteArray b_stl = po.at(1).toLatin1();
     stl=b_stl.data();
-
 
     QByteArray b_gcode = direct.toLatin1();
     gcode = b_gcode.data();
