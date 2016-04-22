@@ -64,7 +64,7 @@ void Welcom::on_parentSetting_clicked()         //家长设置
 
 void Welcom::on_connectIP_clicked()
 {
-    emit Sig_ip("192.168.0.1");
+    emit Sig_ip("192.168.10.1");
 }
 
 void Welcom::on_closeBtn_clicked()

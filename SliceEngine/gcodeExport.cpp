@@ -223,7 +223,7 @@ void GCodeExport::writeMove(Pointc p, int speed, int lineWidth)
                 isRetracted = true;
             }
         }
-        fprintf(f, "G1 X%0.2f Y%0.2f Z%0.2f F%0.1f\n", INT2MM(p.X - extruderOffset[extruderNr].X)/gcodeScale, INT2MM(p.Y - extruderOffset[extruderNr].Y)/gcodeScale, INT2MM(zPos), fspeed);
+        fprintf(f, "G1 X%0.2f Y%0.2f Z%0.2f F%0.1f\n", (INT2MM(p.X - extruderOffset[extruderNr].X))/gcodeScale, (INT2MM(p.Y - extruderOffset[extruderNr].Y)/gcodeScale), INT2MM(zPos), fspeed);
     }else{
         
         //Normal E handling.
@@ -268,7 +268,7 @@ void GCodeExport::writeMove(Pointc p, int speed, int lineWidth)
             currentSpeed = speed;
         }
 
-        fprintf(f, " X%0.2f Y%0.2f", INT2MM(p.X - extruderOffset[extruderNr].X), INT2MM(p.Y - extruderOffset[extruderNr].Y));
+        fprintf(f, " X%0.2f Y%0.2f", (INT2MM(p.X - extruderOffset[extruderNr].X))/gcodeScale, (INT2MM(p.Y - extruderOffset[extruderNr].Y))/gcodeScale);
         //z轴高度发生变化
         if (zPos != currentPosition.z)
             fprintf(f, " Z%0.2f", INT2MM(zPos));
