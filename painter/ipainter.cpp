@@ -195,7 +195,7 @@ void iPainter::on_save_clicked()
 void iPainter::on_paintfood_clicked() //一键打印
 {
     //保存图片
-    ui->painter_area->saveImage("print.png", "PNG");
+//    ui->painter_area->saveImage("print.png", "PNG");
     //图片转换成stl
     //图片切片
     //保存gcode
