@@ -13,6 +13,9 @@ signals:
 
 public slots:
 
+private:
+
+
 };
 
 #endif // PICPRINTER_H

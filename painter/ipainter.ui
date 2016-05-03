@@ -373,8 +373,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="cancle">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>60</y>
+      <x>642</x>
+      <y>66</y>
       <width>75</width>
       <height>41</height>
      </rect>
@@ -392,8 +392,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="deleteFile">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>60</y>
+      <x>552</x>
+      <y>66</y>
       <width>77</width>
       <height>41</height>
      </rect>
@@ -411,8 +411,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="newFile">
     <property name="geometry">
      <rect>
-      <x>205</x>
-      <y>61</y>
+      <x>128</x>
+      <y>67</y>
       <width>75</width>
       <height>41</height>
      </rect>
@@ -430,8 +430,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="open">
     <property name="geometry">
      <rect>
-      <x>297</x>
-      <y>61</y>
+      <x>214</x>
+      <y>67</y>
       <width>75</width>
       <height>41</height>
      </rect>
@@ -449,8 +449,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>382</x>
-      <y>61</y>
+      <x>299</x>
+      <y>67</y>
       <width>75</width>
       <height>41</height>
      </rect>
@@ -468,8 +468,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="paintfood">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>60</y>
+      <x>468</x>
+      <y>66</y>
       <width>75</width>
       <height>42</height>
      </rect>
@@ -487,8 +487,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="stop">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>60</y>
+      <x>732</x>
+      <y>66</y>
       <width>75</width>
       <height>41</height>
      </rect>
@@ -506,8 +506,8 @@ QPushButton:pressed
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>50</y>
+      <x>11</x>
+      <y>56</y>
       <width>101</width>
       <height>61</height>
      </rect>
@@ -525,8 +525,8 @@ QPushButton:pressed
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>30</y>
+      <x>819</x>
+      <y>23</y>
       <width>180</width>
       <height>41</height>
      </rect>
@@ -594,6 +594,55 @@ QPushButton:pressed
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="btnList">
+    <property name="geometry">
+     <rect>
+      <x>383</x>
+      <y>67</y>
+      <width>75</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>List</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCount">
+    <property name="geometry">
+     <rect>
+      <x>822</x>
+      <y>76</y>
+      <width>180</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>180</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+	
+	
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+	
+	
+	font: 75 18pt &quot;华康娃娃体W5&quot;;
+	background-color: rgb(187, 223, 255);
+
+}</string>
+    </property>
+    <property name="text">
+     <string>List count:0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
  </widget>

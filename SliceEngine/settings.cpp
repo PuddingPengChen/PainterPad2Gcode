@@ -14,7 +14,7 @@
 
 ConfigSettings::ConfigSettings()
 {
-    SETTING(layerThickness, 400);
+    SETTING(layerThickness, 500);
     SETTING(initialLayerThickness, 0);
     SETTING(filamentDiameter, 1500);
     SETTING(filamentFlow, 100);
@@ -63,8 +63,8 @@ ConfigSettings::ConfigSettings()
     SETTING(multiVolumeOverlap,0);
 //    SETTING2(objectPosition.X, posx, 102500);
 //    SETTING2(objectPosition.Y, posy, 102500);
-    SETTING2(objectPosition.X, posx, 75000);
-    SETTING2(objectPosition.Y, posy, 75000);
+    SETTING2(objectPosition.X, posx, 90000);
+    SETTING2(objectPosition.Y, posy, 90000);
     SETTING(objectSink, 0);
 
     SETTING(raftMargin, 5000);
@@ -102,6 +102,7 @@ ConfigSettings::ConfigSettings()
             "M220 S50 \n";
     startCode =
         "G90           ;absolute positioning\n"
+        "M4 P160 \n"
         "G28  X Y\n";
 
 

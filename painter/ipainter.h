@@ -2,10 +2,12 @@
 #define IPAINTER_H
 
 #include <QWidget>
+#include <QQueue>
 #include "picture.h"
 #include "./SliceEngine/fffProcessor.h"
 #include "./SliceEngine/settings.h"
 #include "infordialog.h"
+#include "../picedit.h"
 
 namespace Ui {
 class iPainter;
@@ -18,7 +20,9 @@ class iPainter : public QWidget
 public:
     explicit iPainter(QWidget *parent = 0);
     ~iPainter();
-
+public slots:
+    void PrintNext();
+    void PrintNow();
 private slots:
     void on_newFile_clicked();
 
@@ -61,6 +65,8 @@ private slots:
 
     void on_cancle_clicked();
 
+    void on_btnList_clicked();
+
 signals:
     void Sig_file(QString);
     void Sig_stop();
@@ -69,6 +75,7 @@ private:
     Ui::iPainter *ui;
     bool _saved;
     bool _opened;
+    bool _printAble;
     int pen_size;
     QString _filename;
 
@@ -77,6 +84,8 @@ private:
     Picture* tool;
     Picture* katong;
     Picture* plant;
+    QQueue<QImage> printList;
+    PicEdit* PicGrayEdit;
 
     void Enable_User_Waiting_Cursor();
     void Disable_User_Waiting_Cursor();

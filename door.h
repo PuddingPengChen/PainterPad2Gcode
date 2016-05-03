@@ -15,6 +15,7 @@ signals:
     void Sig_connected(QString status);
     void Sig_progress(qint64 total,qint64 current);
     void Sig_msg(QString msg);
+    void Sig_PrintNext();
 
 public slots:
     void sendCommand(QString cmd);  //发送指令

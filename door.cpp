@@ -147,28 +147,11 @@ void Door::disconnectServer()
 }
 void Door::getServerMsg()
 {
-    QDataStream recIn(tcpClient);
-    recIn.setVersion(QDataStream::Qt_4_8);
-    if(recvBytes<sizeof(qint64))
+    QString po = tcpClient->readAll();
+    qDebug()<<"from server:"<<po;
+    if(po=="Finish")
     {
-        if(tcpClient->bytesAvailable()>=sizeof(qint64))
-        {
-            recIn>>recvTotal;
-            recvBytes+=sizeof(qint64);
-        }
-    }
-    if(recvBytes>=sizeof(qint64))
-    {
-        QString d ;
-        recIn>>d;
-        recvBytes+=d.toLatin1().size();
-        emit Sig_msg(d);
-        qDebug()<<d;
-    }
-    if((recvBytes==recvTotal)&&(recvBytes>0))
-    {
-        recvBytes = 0;
-        recvTotal = 0;
+        emit Sig_PrintNext();
     }
 }
 void Door::displayError(QAbstractSocket::SocketError) //显示错误

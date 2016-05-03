@@ -27,6 +27,7 @@ ParentSetting::ParentSetting(QWidget *parent) :
     ui->tempture->setText(temps);
     ui->speeding->setText(speed);
     ui->extrudingSpeed->setText(excluder);
+
     ui->zvalues->setText(zvalue);
     ui->rectA->setText(rectA);
     ui->rectS->setText(rectS);

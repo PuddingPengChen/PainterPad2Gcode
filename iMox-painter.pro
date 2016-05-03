@@ -23,7 +23,8 @@ FORMS += \
     painter/picture.ui \
     keyboard/frmnum.ui \
     infordialog.ui \
-    form.ui
+    form.ui \
+    picedit.ui
 
 HEADERS += \
     welcom.h \
@@ -68,7 +69,8 @@ HEADERS += \
     painter/picture.h \
     keyboard/frmnum.h \
     infordialog.h \
-    form.h
+    form.h \
+    picedit.h
 
 SOURCES += \
     main.cpp \
@@ -106,7 +108,8 @@ SOURCES += \
     painter/picture.cpp \
     keyboard/frmnum.cpp \
     infordialog.cpp \
-    form.cpp
+    form.cpp \
+    picedit.cpp
 
 RESOURCES += \
     img-res.qrc

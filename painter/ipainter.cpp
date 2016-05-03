@@ -11,9 +11,10 @@ iPainter::iPainter(QWidget *parent) :
 {
 
     ui->setupUi(this);
-    pen_size = 3;
+    pen_size = 4;
     _saved = false;
     _opened = false;
+    _printAble = false;
     _filename = "";
 
     animal = new Picture(NULL,"./src/animal/");
@@ -22,10 +23,14 @@ iPainter::iPainter(QWidget *parent) :
     plant = new Picture(NULL,"./src/plant/");
     katong = new Picture(NULL,"./src/katong/");
 
+    PicGrayEdit = new PicEdit();
+
     connect(animal,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
     connect(tool,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
     connect(human,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
     connect(plant,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
+
+    connect(PicGrayEdit,SIGNAL(Sig_Print()),this,SLOT(on_paintfood_clicked()));
 
     dialog = new InforDialog();
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -75,7 +80,7 @@ void iPainter::on_newFile_clicked()     //新建
     _filename = "";
     ui->painter_area->setPenColor(Qt::black);
     ui->painter_area->setBackColor(QColor(0, 0, 0, 0));
-    ui->painter_area->setPenWidth(2);
+    ui->painter_area->setPenWidth(4);
     ui->painter_area->clearHistory();
     ui->painter_area->setGeometry(0, 0, ui->frame->width(), ui->frame->height());
     ui->painter_area->setGeometry(0, 0, ui->frame->width(), ui->frame->height());
@@ -88,9 +93,11 @@ void iPainter::on_newFile_clicked()     //新建
 void iPainter::on_open_clicked()    //打开图片
 {
     QString filename =  QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Images (*.png *.bmp *.jpg)"));
-    ui->painter_area->openImage(filename);
-    ui->painter_area->ReSize(841,581);
-    _filename = filename;
+    PicGrayEdit->LoadPicture(filename);
+    PicGrayEdit->show();
+//    ui->painter_area->openImage(filename);
+//    ui->painter_area->ReSize(841,581);
+//    _filename = filename;
     _opened = true;
 }
 void iPainter::on_deleteFile_clicked()      //删除
@@ -161,19 +168,19 @@ void iPainter::on_self_clicked()        //自定义
 
 void iPainter::on_small_clicked()       //细 笔
 {
-    pen_size = 2;
+    pen_size = 3;
     ui->painter_area->setPenWidth(pen_size);
 }
 
 void iPainter::on_middle_clicked()      //中等 笔
 {
-    pen_size = 4;
+    pen_size = 5;
     ui->painter_area->setPenWidth(pen_size);
 }
 
 void iPainter::on_big_clicked()         //粗 笔
 {
-    pen_size = 6;
+    pen_size = 7;
     ui->painter_area->setPenWidth(pen_size);
 }
 
@@ -199,58 +206,8 @@ void iPainter::on_paintfood_clicked() //一键打印
     //图片转换成stl
     //图片切片
     //保存gcode
-
-    ui->label->setText("正在处理...");
-    ui->label->repaint();
-    fffProcessor *processor;
-    ConfigSettings config;
-    processor = new fffProcessor(config);
-    QProcess* free;     //调用外部可执行程序或shell命令的类
-    QStringList po;     //参数列表
-    po.append("print.png");
-    po.append("temp.stl");
-
-//    po.append("invert");
-
-    //po.append("noinvert");
-    QTime time;
-    time.start();
-    Enable_User_Waiting_Cursor();
-<<<<<<< HEAD
-    po.append("300");
-=======
-//    po.append("130");
->>>>>>> fe3c9fc124a3a5355dc52bbced2bf1f7c317a95d
-//    if(free->execute("./load/load.exe",po))
-    QStringList pp;
-    pp.append("./python/load.py");
-    pp.append("print.png");
-    pp.append("temp.stl");
-    pp.append("invert");
-    pp.append("130");
-     if(free->execute("./python/python.exe",pp))
-    {
-        qDebug()<<"load finished!!";
-    }
-    qDebug()<<"enter 2 printfood!";
-    char*  stl;
-    char* gcode;
-    QString direct = "print.gcode";
-    QByteArray b_stl = po.at(1).toLatin1();
-    stl=b_stl.data();
-
-    QByteArray b_gcode = direct.toLatin1();
-    gcode = b_gcode.data();
-    processor->setTargetFile(gcode);
-    processor->processFile(stl);
-    Disable_User_Waiting_Cursor();
-     qDebug()<<time.elapsed()/1000.0<<"s";
-    ui->label->setText("处理完成~~");
-    QMessageBox::information(this,"通知","处理完成，按下OK开始打印...");
-    ui->label->setText("xx的小画板");
-    //发送gcode
-    emit Sig_file("print.gcode");
-    //发送开始打印指令
+//    on_btnList_clicked();
+    PrintNext();
 }
 void iPainter::on_stop_clicked()        //暂停
 {
@@ -301,3 +258,88 @@ void iPainter::on_back_clicked()        //关闭
 }
 
 
+//add to list
+void iPainter::on_btnList_clicked()
+{
+    ui->painter_area->saveImage("print.png", "PNG");
+    QImage po("print.png");
+    printList.append(po);
+    _printAble = true;
+    ui->labelCount->setText(tr("List count:%1").arg(printList.count()));
+}
+//print next gcode if existed
+void iPainter::PrintNext()
+{
+    ui->labelCount->setText(tr("List count:%1").arg(printList.count()));
+    if(printList.count()>0)
+    {
+        _printAble = true;
+        PrintNow();
+
+    }
+    else
+    {
+        _printAble = false;
+    }
+}
+//print function
+void iPainter::PrintNow()
+{
+    if(_printAble)
+    {
+        QImage printImage;
+        if(!_opened)
+        {
+            printImage = printList.dequeue();
+        }
+        ui->label->setText("Processing...");
+        ui->label->repaint();
+        fffProcessor *processor;
+        ConfigSettings config;
+        processor = new fffProcessor(config);
+        QProcess* free;     //调用外部可执行程序或shell命令的类
+        QStringList po;     //参数列表
+        po.append("print.png");
+        po.append("temp.stl");
+
+    //    po.append("invert");
+
+        //po.append("noinvert");
+        QTime time;
+        time.start();
+        Enable_User_Waiting_Cursor();
+        po.append("300");
+
+    //    if(free->execute("./load/load.exe",po))
+        QStringList pp;
+        pp.append("./python/load.py");
+        pp.append("print.png");
+        pp.append("temp.stl");
+        pp.append("invert");
+        pp.append("160");
+         if(free->execute("./python/python.exe",pp))
+        {
+            qDebug()<<"load finished!!";
+        }
+        qDebug()<<"enter 2 printfood!";
+        char*  stl;
+        char* gcode;
+        QString direct = "print.gcode";
+        QByteArray b_stl = po.at(1).toLatin1();
+        stl=b_stl.data();
+
+        QByteArray b_gcode = direct.toLatin1();
+        gcode = b_gcode.data();
+        processor->setTargetFile(gcode);
+        processor->processFile(stl);
+        Disable_User_Waiting_Cursor();
+         qDebug()<<time.elapsed()/1000.0<<"s";
+        ui->label->setText("处理完成~~");
+        QMessageBox::information(this,"通知","处理完成，按下OK开始打印...");
+        ui->label->setText("Painter");
+        //发送gcode
+        emit Sig_file("print.gcode");
+        //发送开始打印指令
+        _opened = false;
+    }
+}

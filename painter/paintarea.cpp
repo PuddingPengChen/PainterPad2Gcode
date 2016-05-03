@@ -63,7 +63,7 @@ bool PaintArea::openImage(const QString &fileName)
 
 bool PaintArea::saveImage(const QString &fileName, const char *fileFormat)
 {
-    QImage visibleImage = image;
+    QImage visibleImage = image.mirrored();
     resizeImage(&visibleImage, size());
     if (visibleImage.save(fileName, fileFormat))
     {

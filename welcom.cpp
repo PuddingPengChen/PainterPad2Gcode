@@ -32,6 +32,9 @@ Welcom::Welcom(QWidget *parent) :
     connect(mPainter,SIGNAL(Sig_stop()),mPrinterSettings,SLOT(slotStop()));
     connect(mPainter,SIGNAL(Sig_cancle()),mPrinterSettings,SLOT(slotCancle()));
 
+    //DOOR-------->iPainter
+    connect(doors,SIGNAL(Sig_PrintNext()),mPainter,SLOT(PrintNext()));
+
     this->setWindowTitle(tr("Make-Block"));
     this->setWindowFlags(Qt::FramelessWindowHint);
 }
