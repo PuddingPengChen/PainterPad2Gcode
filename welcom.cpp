@@ -47,7 +47,7 @@ void Welcom::connectStatus(QString t)       //服务器发送过来的连接状�
 {
     if(t=="Suc")
     {
-        QMessageBox::information(this,tr("通知"),tr("已连接打印机"));
+        QMessageBox::information(this,tr("Notice"),tr("XY laser connected!"));
     }
 }
 //接收来自orangepi的数据
@@ -57,7 +57,7 @@ void Welcom::showMsg(QString t)
 }
 void Welcom::on_ipaint_clicked()
 {
-    mPainter->show();
+    mPainter->showMaximized();
 }
 
 void Welcom::on_parentSetting_clicked()         //家长设置

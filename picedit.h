@@ -2,6 +2,7 @@
 #define PICEDIT_H
 
 #include <QWidget>
+#include "./potrace-gcode/potracewidget.h"
 
 namespace Ui {
 class PicEdit;
@@ -29,6 +30,9 @@ private:
     QImage Image2GrayScale(QImage image);
     void ExportGrayPix(QImage src);
     bool preOn;
+
+    PotraceWidget* potrace;
+    QImage currentImage;
 signals:
     void Sig_Print();
 };

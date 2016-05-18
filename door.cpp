@@ -31,7 +31,7 @@ void Door::send()   //连接到服务器，执行发送
 }
 void Door::connectedSuccess()
 {
-    qDebug()<<tr("连接成功！");
+//    qDebug()<<tr("连接成功！");
     emit Sig_connected("Suc");
     bConnect = true;
 }
@@ -133,7 +133,6 @@ void Door::sendFile(QString files)
     fileName = files;
     startTransfer();
 }
-
 
 void Door::connectServer(QString ips)
 {

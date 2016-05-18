@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     //以下方法打开中文输入法
     frmNum::Instance()->Init("lightgray",10);
     Welcom w;
-    w.show();
+    w.showMaximized();
 
     return a.exec();
 }

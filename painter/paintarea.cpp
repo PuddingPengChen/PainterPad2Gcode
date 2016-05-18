@@ -41,7 +41,7 @@ bool PaintArea::openImage(const QString &fileName)
         loadedImage_scaled = loadedImage.scaled(loadedImage.width()*scaled,loadedImage.height()*scaled);
     }
     else
-      loadedImage_scaled =  loadedImage;
+        loadedImage_scaled =  loadedImage;
     loadedImage_scaled.save("print.png","PNG",100);
     _size_x = loadedImage_scaled.width();
     _size_y = loadedImage_scaled.height();
@@ -63,6 +63,7 @@ bool PaintArea::openImage(const QString &fileName)
 
 bool PaintArea::saveImage(const QString &fileName, const char *fileFormat)
 {
+    //    QImage visibleImage = image.mirrored();
     QImage visibleImage = image.mirrored();
     resizeImage(&visibleImage, size());
     if (visibleImage.save(fileName, fileFormat))

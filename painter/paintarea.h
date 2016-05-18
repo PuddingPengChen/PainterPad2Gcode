@@ -116,6 +116,7 @@ private:
     double _size_x;
     double _size_y;
 
+
 };
 
 #endif

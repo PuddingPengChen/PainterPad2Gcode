@@ -67,6 +67,10 @@ private slots:
 
     void on_btnList_clicked();
 
+    void on_btnRemove_clicked();
+
+    void on_btnPrintC_clicked();
+
 signals:
     void Sig_file(QString);
     void Sig_stop();
@@ -77,6 +81,8 @@ private:
     bool _opened;
     bool _printAble;
     int pen_size;
+    const int w_icon;
+    const int h_icon;
     QString _filename;
 
     Picture* animal;
@@ -92,6 +98,10 @@ private:
 
     QImage changeGray(QString img,int grayscale);
     InforDialog* dialog;
+
+    PotraceWidget* newGcode;
+
+//    QWebView* chrome;
 };
 
 #endif // IPAINTER_H

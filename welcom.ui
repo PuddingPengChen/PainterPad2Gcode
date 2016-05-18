@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1024</width>
-    <height>768</height>
+    <width>1200</width>
+    <height>800</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@ QPushButton
 	
 	background-color: rgb(255, 255, 255);
 	border:1px solid black;
-	border-radius:12px;
+	
 }
 QPushButton
 {
@@ -82,24 +82,11 @@ QPushButton:pressed
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="closeBtn">
-       <property name="geometry">
-        <rect>
-         <x>860</x>
-         <y>70</y>
-         <width>75</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Quit</string>
-       </property>
-      </widget>
       <widget class="QFrame" name="frame_2">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>130</y>
+         <x>400</x>
+         <y>150</y>
          <width>471</width>
          <height>451</height>
         </rect>
@@ -175,6 +162,19 @@ QPushButton:pressed
         </property>
         <property name="text">
          <string>Painter</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="closeBtn">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>20</y>
+          <width>75</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Quit</string>
         </property>
        </widget>
       </widget>

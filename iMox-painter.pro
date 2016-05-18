@@ -5,10 +5,11 @@
 #-------------------------------------------------
 
 QT       += core gui network
-QT += printsupport
+QT       += printsupport svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+include(./QxPotrace.pri)
 TARGET = iMox-painter
 TEMPLATE = app
 
@@ -24,7 +25,8 @@ FORMS += \
     keyboard/frmnum.ui \
     infordialog.ui \
     form.ui \
-    picedit.ui
+    picedit.ui \
+    potrace-gcode/potracewidget.ui
 
 HEADERS += \
     welcom.h \
@@ -70,7 +72,12 @@ HEADERS += \
     keyboard/frmnum.h \
     infordialog.h \
     form.h \
-    picedit.h
+    picedit.h \
+    potrace-gcode/nanosvg.h \
+    potrace-gcode/svg2gcode.h \
+    potrace-gcode/svgpath.h \
+    potrace-gcode/XGetopt.h \
+    potrace-gcode/potracewidget.h
 
 SOURCES += \
     main.cpp \
@@ -109,7 +116,12 @@ SOURCES += \
     keyboard/frmnum.cpp \
     infordialog.cpp \
     form.cpp \
-    picedit.cpp
+    picedit.cpp \
+    potrace-gcode/svgpath.cpp \
+    potrace-gcode/nanosvg.c \
+    potrace-gcode/svg2gcode.c \
+    potrace-gcode/XGetopt.c \
+    potrace-gcode/potracewidget.cpp
 
 RESOURCES += \
     img-res.qrc

@@ -117,7 +117,7 @@ QPushButton:pressed
 }</string>
       </property>
       <property name="text">
-       <string>返回</string>
+       <string>Back</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton">
@@ -130,7 +130,7 @@ QPushButton:pressed
        </rect>
       </property>
       <property name="text">
-       <string>完成</string>
+       <string>OK</string>
       </property>
      </widget>
      <widget class="QFrame" name="frame_5">
@@ -629,7 +629,7 @@ border:1px solid black;
         <item row="1" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>挤出料速度</string>
+           <string>Exculd</string>
           </property>
          </widget>
         </item>
@@ -653,7 +653,7 @@ border:1px solid black;
         <item row="0" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>打印速度</string>
+           <string>PrintSpeed</string>
           </property>
          </widget>
         </item>

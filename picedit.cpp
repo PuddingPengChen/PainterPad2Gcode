@@ -45,6 +45,7 @@ PicEdit::PicEdit(QWidget *parent) :
     ui->setupUi(this);
     preOn = false;
     this->setWindowTitle(tr("GrayScale"));
+    potrace = new PotraceWidget();
 }
 
 PicEdit::~PicEdit()
@@ -92,6 +93,7 @@ void PicEdit::GrayScalePicture(int grayscale)
 void PicEdit::on_startPrint_clicked()
 {
     gray_image.save("print.png","PNG",100);       //变换了灰度值的图
+    gray_image.save("gi.png","PNG",100);
     emit Sig_Print();
 }
 //slider value change
@@ -297,7 +299,11 @@ void PicEdit::ExportGrayPix(QImage src)
 
 void PicEdit::on_btngray_clicked()
 {
-    QImage image("temp.png");
-//    Image2GrayScale(image);
-    ExportGrayPix(Image2GrayScale(image));
+//    QImage image("temp.png");
+
+//    ExportGrayPix(Image2GrayScale(image));
+    gray_image.save("gi.png","PNG",100);
+    potrace->loadImage("temp.png");
+    potrace->outSvg();
+    potrace->outGcode();
 }
