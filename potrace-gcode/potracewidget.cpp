@@ -34,26 +34,7 @@ void PotraceWidget::paint(QPainter &painter)
     QPainterPath *po = new QPainterPath();
     float w = 10000;
     float h = 10000;
-//    foreach(const QxPotrace::Polygon &polygon, potrace.polygons())
-//    {
 
-//      for(int s = 0;s<polygon.boundary.count();s++)
-//      {
-//          w = qMin(w,(float)polygon.boundary.at(s).x());
-//          h = qMin(h,(float)polygon.boundary.at(s).y());
-//      }
-
-//      foreach(const QPolygonF &hole, polygon.holes)
-//      {
-//          for(int n = 0;n<polygon.boundary.count();n++)
-//          {
-//              w = qMin(w,(float)hole.at(n).x());
-//              h = qMin(h,(float)hole.at(n).y());
-//          }
-
-//      }
-
-//    }
     foreach(const QxPotrace::Polygon &polygon, potrace.polygons())
     {
       po->addPolygon(polygon.boundary);

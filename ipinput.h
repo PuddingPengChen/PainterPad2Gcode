@@ -19,6 +19,8 @@ signals:
 private slots:
     void on_connectIP_clicked();
 
+    void on_lineEdit_returnPressed();
+
 private:
     Ui::IPinput *ui;
 };

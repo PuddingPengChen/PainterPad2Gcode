@@ -6,6 +6,7 @@
 
 QT       += core gui network
 QT       += printsupport svg
+QT       += webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -77,7 +78,8 @@ HEADERS += \
     potrace-gcode/svg2gcode.h \
     potrace-gcode/svgpath.h \
     potrace-gcode/XGetopt.h \
-    potrace-gcode/potracewidget.h
+    potrace-gcode/potracewidget.h \
+    gmodel.h
 
 SOURCES += \
     main.cpp \
@@ -121,7 +123,8 @@ SOURCES += \
     potrace-gcode/nanosvg.c \
     potrace-gcode/svg2gcode.c \
     potrace-gcode/XGetopt.c \
-    potrace-gcode/potracewidget.cpp
+    potrace-gcode/potracewidget.cpp \
+    gmodel.cpp
 
 RESOURCES += \
     img-res.qrc

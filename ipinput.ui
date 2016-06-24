@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>192.168.0.1</string>
+    <string>10.0.0.249</string>
    </property>
   </widget>
   <widget class="QPushButton" name="connectIP">

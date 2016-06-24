@@ -394,7 +394,7 @@ int svgToGcode(char * file,int be) {
 #ifdef _WIN32
     seedrand((float)time(0));
 #endif
-    gcode=fopen("print.gcode","w");
+    gcode=fopen("out.gcode","w");
     if(gcode == NULL)
     {
         return -1;

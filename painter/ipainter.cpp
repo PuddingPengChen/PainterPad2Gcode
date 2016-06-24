@@ -24,8 +24,9 @@ iPainter::iPainter(QWidget *parent) :
     katong = new Picture(NULL,"./src/katong/");
 
     PicGrayEdit = new PicEdit();
-//    chrome = new QWebView();
-//    chrome->load(QUrl("qrc:/potrace/index.html"));
+    chrome = new QWebView();
+    chrome->load(QUrl("qrc:/potrace/index.html"));
+    gcodes = new GModel();
 
     connect(animal,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
     connect(tool,SIGNAL(Sig_drawPath(QString)),this,SLOT(showModel(QString)));
@@ -100,27 +101,30 @@ void iPainter::on_newFile_clicked()     //新建
 }
 void iPainter::on_open_clicked()    //打开图片
 {
+    //签名笔应用
     QString filename =  QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Images (*.png *.bmp *.jpg)"));
     PicGrayEdit->LoadPicture(filename);
     PicGrayEdit->show();
+
+
 //    ui->painter_area->openImage(filename);
 //    ui->painter_area->ReSize(841,581);
 //    _filename = filename;
     _opened = true;
 
     //potrace javascript
-//    QImage potrace(filename);
-//    potrace.save("potrace.png","PNG",100);
-//    QVariant po = chrome->page()->mainFrame()->evaluateJavaScript("handleFiles(\"potrace.png\");");
-//    QString outs = po.toString();
-//    QFile file("out.svg");
-//    if (!file.open(QIODevice::WriteOnly|QIODevice::Text)) {
-//        QMessageBox::critical(NULL, tr("提示"), tr("无法创建文件"));
-//        return ;
-//    }
-//    QTextStream out(&file);
-//    out<<outs;
-//    file.close();
+    QImage potrace(filename);
+    potrace.save("potrace.png","PNG",100);
+    QVariant po = chrome->page()->mainFrame()->evaluateJavaScript("handleFiles(\"potrace.png\");");
+    QString outs = po.toString();
+    QFile file("out.svg");
+    if (!file.open(QIODevice::WriteOnly|QIODevice::Text)) {
+        QMessageBox::critical(NULL, tr("提示"), tr("无法创建文件"));
+        return ;
+    }
+    QTextStream out(&file);
+    out<<outs;
+    file.close();
 
 }
 void iPainter::on_deleteFile_clicked()      //删除
@@ -330,7 +334,7 @@ void iPainter::PrintNow()
     if(_printAble)
     {
         QImage printImage;
-//        if(!_opened)
+        if(!_opened)
         {
             printImage = printList.dequeue();
             ui->listWidget->clear();
@@ -389,6 +393,7 @@ void iPainter::PrintNow()
         newGcode->loadImage("out.png");
         newGcode->outSvg();
         newGcode->outGcode();
+        gcodes->filterGcode("out.gcode",QPointF(0,0),QPointF(85,58),"print.gcode");
         Disable_User_Waiting_Cursor();
         QMessageBox::information(this,"Notice","Image convert finish，pree OK to begin ...");
 //        ui->label->setText("Process finsh!");

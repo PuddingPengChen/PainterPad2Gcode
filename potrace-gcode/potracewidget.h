@@ -3,13 +3,14 @@
 
 #include <QWidget>
 #include <QxPotrace>
+#include <QSvgGenerator>
+#include <QPainter>
 #include <QFileDialog>
 #include <QImage>
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QSvgGenerator>
 #include <QDebug>
-#include <QPainter>
+
 
 #include "svgpath.h"
 
@@ -33,10 +34,11 @@ protected:
 
 private:
     void paint(QPainter &painter);
+    QxPotrace potrace;
     Ui::PotraceWidget *ui;
     QGraphicsView *view;
     QGraphicsScene *scene;
-    QxPotrace potrace;
+
     svgPath* svgs;
 };
 

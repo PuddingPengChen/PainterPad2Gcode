@@ -3,11 +3,14 @@
 
 #include <QWidget>
 #include <QQueue>
+#include <QWebView>
+#include <QWebFrame>
 #include "picture.h"
 #include "./SliceEngine/fffProcessor.h"
 #include "./SliceEngine/settings.h"
 #include "infordialog.h"
 #include "../picedit.h"
+#include "gmodel.h"
 
 namespace Ui {
 class iPainter;
@@ -101,7 +104,8 @@ private:
 
     PotraceWidget* newGcode;
 
-//    QWebView* chrome;
+    QWebView* chrome;
+    GModel* gcodes;
 };
 
 #endif // IPAINTER_H

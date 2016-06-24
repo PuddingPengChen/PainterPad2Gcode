@@ -34,7 +34,7 @@ ParentSetting::ParentSetting(QWidget *parent) :
     ui->flimant->setText(flimant);
     ui->widthE->setText(widthE);
     settings->endGroup();
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
 }
 
 ParentSetting::~ParentSetting()

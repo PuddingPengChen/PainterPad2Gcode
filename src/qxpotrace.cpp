@@ -176,7 +176,7 @@ QxPotrace::QxPotrace() :
   m_alphaMax(1.0),
   m_turdSize(2),
   m_curveTolerance(0.2),
-  m_threshold(0),
+  m_threshold(0.5),
   m_bezierPrecision(4)
 {
 }

@@ -36,7 +36,7 @@ Welcom::Welcom(QWidget *parent) :
     connect(doors,SIGNAL(Sig_PrintNext()),mPainter,SLOT(PrintNext()));
 
     this->setWindowTitle(tr("Make-Block"));
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
 }
 
 Welcom::~Welcom()
@@ -57,7 +57,7 @@ void Welcom::showMsg(QString t)
 }
 void Welcom::on_ipaint_clicked()
 {
-    mPainter->showMaximized();
+    mPainter->show();
 }
 
 void Welcom::on_parentSetting_clicked()         //家长设置
@@ -67,7 +67,8 @@ void Welcom::on_parentSetting_clicked()         //家长设置
 
 void Welcom::on_connectIP_clicked()
 {
-    emit Sig_ip("192.168.10.1");
+    IPDialog->show();
+//    emit Sig_ip("192.168.10.1");
 }
 
 void Welcom::on_closeBtn_clicked()

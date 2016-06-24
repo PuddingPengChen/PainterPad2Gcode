@@ -16,4 +16,11 @@ IPinput::~IPinput()
 void IPinput::on_connectIP_clicked()
 {
     emit Sig_ip(ui->lineEdit->text());
+    this->close();
+}
+
+void IPinput::on_lineEdit_returnPressed()
+{
+    emit Sig_ip(ui->lineEdit->text());
+    this->close();
 }
