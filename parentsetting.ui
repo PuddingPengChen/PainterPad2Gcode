@@ -138,7 +138,7 @@ QPushButton:pressed
        <rect>
         <x>470</x>
         <y>180</y>
-        <width>471</width>
+        <width>511</width>
         <height>481</height>
        </rect>
       </property>
@@ -223,32 +223,6 @@ border:1px solid black;
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="zUp">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Z+</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="zDown">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Z-</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QRadioButton" name="small">
@@ -299,7 +273,7 @@ border:1px solid black;
          <x>130</x>
          <y>30</y>
          <width>141</width>
-         <height>371</height>
+         <height>111</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -309,32 +283,6 @@ border:1px solid black;
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QPushButton" name="eOut">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>挤出</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="eIn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>回抽</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QPushButton" name="xHome">
           <property name="sizePolicy">
@@ -361,32 +309,6 @@ border:1px solid black;
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="zHome">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>ZHome</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Home">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Home</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QFrame" name="frame_3">
@@ -394,8 +316,8 @@ border:1px solid black;
         <rect>
          <x>290</x>
          <y>30</y>
-         <width>161</width>
-         <height>301</height>
+         <width>191</width>
+         <height>111</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -418,74 +340,22 @@ border:1px solid black;
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="stoped">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>暂停</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="recovery">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>恢复</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="cancle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>取消</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>预热</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
-      <widget class="QPushButton" name="current_z">
+      <widget class="QFrame" name="serial">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>340</y>
-         <width>141</width>
-         <height>51</height>
+         <x>130</x>
+         <y>150</y>
+         <width>351</width>
+         <height>251</height>
         </rect>
        </property>
-       <property name="text">
-        <string>当前喷头高度</string>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
        </property>
       </widget>
      </widget>

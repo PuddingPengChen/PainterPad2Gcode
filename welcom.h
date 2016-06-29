@@ -7,6 +7,8 @@
 #include "ipinput.h"
 #include "door.h"
 
+#include "./uart/cpserialport.h"
+
 namespace Ui {
 class Welcom;
 }
@@ -36,6 +38,7 @@ private:
     ParentSetting* mPrinterSettings;
     IPinput * IPDialog;
     Door* doors;
+    CPSerialPort * myport;
 signals:
     void Sig_ip(QString);
 };

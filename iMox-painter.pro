@@ -6,13 +6,14 @@
 
 QT       += core gui network
 QT       += printsupport svg
-QT       += webkitwidgets
+QT       += webkitwidgets serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 include(./QxPotrace.pri)
 TARGET = iMox-painter
 TEMPLATE = app
+#CONFIG   += c++11
 
 FORMS += \
     welcom.ui \
@@ -27,7 +28,8 @@ FORMS += \
     infordialog.ui \
     form.ui \
     picedit.ui \
-    potrace-gcode/potracewidget.ui
+    potrace-gcode/potracewidget.ui \
+    uart/cpserialport.ui
 
 HEADERS += \
     welcom.h \
@@ -79,7 +81,10 @@ HEADERS += \
     potrace-gcode/svgpath.h \
     potrace-gcode/XGetopt.h \
     potrace-gcode/potracewidget.h \
-    gmodel.h
+    gmodel.h \
+    uart/cpserialport.h \
+    gsendmodel.h
+
 
 SOURCES += \
     main.cpp \
@@ -124,7 +129,9 @@ SOURCES += \
     potrace-gcode/svg2gcode.c \
     potrace-gcode/XGetopt.c \
     potrace-gcode/potracewidget.cpp \
-    gmodel.cpp
+    gmodel.cpp \
+    uart/cpserialport.cpp \
+    gsendmodel.cpp
 
 RESOURCES += \
     img-res.qrc

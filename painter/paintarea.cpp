@@ -466,7 +466,9 @@ void PaintArea::mousePressEvent(QMouseEvent *event)
         _scroll = image;
         scribbling = true;
         if (_tool == 1)
+        {
             drawLineTo(event->pos());
+        }
         else if (_tool == 2)
             drawEraser(event->pos());
         else if (_tool == 11)
@@ -479,7 +481,10 @@ void PaintArea::mouseMoveEvent(QMouseEvent *event)
     if (_tool == 1)
     {
         if (scribbling)
+        {
             drawLineTo(event->pos());
+            points._segments.push_back(event->pos());
+        }
     }
     else if (_tool == 2)
     {
@@ -541,7 +546,11 @@ void PaintArea::mouseReleaseEvent(QMouseEvent *event)
         {
             drawLineTo(event->pos());
             scribbling = false;
+
         }
+        draw_segment _points = points;
+        points._segments.clear();
+        path.push_back(_points);
     }
     else if (_tool == 2)
     {
@@ -693,4 +702,13 @@ void PaintArea::ReSize(int x, int y)
     emit setSize(x, y);
     _size_x = x;
     _size_y = y;
+}
+std::vector<draw_segment> PaintArea::GetPath()
+{
+    return path;
+}
+void PaintArea::ClearData()
+{
+    points._segments.clear();
+    path.clear();
 }

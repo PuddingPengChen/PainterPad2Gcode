@@ -534,13 +534,13 @@ int svgToGcode(char * file,int be) {
             fprintf(gcode,"G1 Z%f \n",ztraverse);
     }
     fprintf(gcode,GFOOTER);
-    if(g_store<2000)
-    {
-        for(i=0;i<(300-g_store/10);i++)
-        {
-            fprintf(gcode,GSTORAGE);
-        }
-    }
+//    if(g_store<2000)
+//    {
+//        for(i=0;i<(300-g_store/10);i++)
+//        {
+//            fprintf(gcode,GSTORAGE);
+//        }
+//    }
     fclose(gcode);
     free(points);
     free(cities);

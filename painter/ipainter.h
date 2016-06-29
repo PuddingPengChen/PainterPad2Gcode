@@ -11,6 +11,7 @@
 #include "infordialog.h"
 #include "../picedit.h"
 #include "gmodel.h"
+#include "gsendmodel.h"
 
 namespace Ui {
 class iPainter;
@@ -26,6 +27,8 @@ public:
 public slots:
     void PrintNext();
     void PrintNow();
+    void ReadArduino(QString cmd);
+//    void AddToSender();
 private slots:
     void on_newFile_clicked();
 
@@ -106,6 +109,14 @@ private:
 
     QWebView* chrome;
     GModel* gcodes;
+    GSendModel* sender;
+    QString toSend;
+    bool isStop;
+
+    //function
+    void AddToSender();
+signals:
+    void Sig_toarduino(QString);
 };
 
 #endif // IPAINTER_H

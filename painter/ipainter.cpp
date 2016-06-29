@@ -3,6 +3,7 @@
 #include "./painter/paintarea.h"
 #include <QMessageBox>
 #include <QDebug>
+#include <QPoint>
 #include "infordialog.h"
 
 iPainter::iPainter(QWidget *parent) :
@@ -16,6 +17,9 @@ iPainter::iPainter(QWidget *parent) :
     _opened = false;
     _printAble = false;
     _filename = "";
+
+    sender = new GSendModel();
+    isStop = true;
 
     animal = new Picture(NULL,"./src/animal/");
     tool = new Picture(NULL,"./src/tool/");
@@ -150,6 +154,19 @@ void iPainter::on_blackPen_clicked()        //黑笔
     QPixmap mouseCursor = QPixmap(":/img/dot.png");
     QCursor _Cur(mouseCursor, 2,2);
     ui->painter_area->setCursor(_Cur);
+
+    //获取路径信息，打印出来
+    std::vector<draw_segment> p = ui->painter_area->GetPath();
+    for(int i=0;i<p.size();i++)
+    {
+        qDebug()<<tr("The %1 path").arg(i);
+        draw_segment points = p.at(i);
+        for(int j = 0;j<points._segments.size();j++)
+        {
+            qDebug()<<tr("No x=%1,y=%2").arg(points._segments.at(j).x()).arg(points._segments.at(j).y());
+        }
+
+    }
 }
 
 void iPainter::on_redPen_clicked()      //红笔
@@ -247,11 +264,16 @@ void iPainter::on_paintfood_clicked() //一键打印
 }
 void iPainter::on_stop_clicked()        //暂停
 {
-    emit Sig_stop();
+//    emit Sig_stop();
+    isStop = true;
+    emit Sig_toarduino("M4 P0");
 }
 void iPainter::on_cancle_clicked()      //取消
 {
-    emit Sig_cancle();
+    isStop = true;
+    sender->reset();
+    emit Sig_toarduino("M4 P0");
+    emit Sig_toarduino("G28 X Y");
 }
 
 void iPainter::Enable_User_Waiting_Cursor()
@@ -331,6 +353,7 @@ void iPainter::PrintNext()
 void iPainter::PrintNow()
 {
 
+
     if(_printAble)
     {
         QImage printImage;
@@ -393,7 +416,7 @@ void iPainter::PrintNow()
         newGcode->loadImage("out.png");
         newGcode->outSvg();
         newGcode->outGcode();
-        gcodes->filterGcode("out.gcode",QPointF(0,0),QPointF(85,58),"print.gcode");
+        gcodes->filterGcode("out.gcode",QPointF(0,0),QPointF(50,34),"print.gcode");
         Disable_User_Waiting_Cursor();
         QMessageBox::information(this,"Notice","Image convert finish，pree OK to begin ...");
 //        ui->label->setText("Process finsh!");
@@ -401,7 +424,12 @@ void iPainter::PrintNow()
 
 
         //发送gcode
-        emit Sig_file("print.gcode");
+//        emit Sig_file("print.gcode");
+        sender->reset();
+        sender->SetTargetFile("print.gcode");
+        emit Sig_toarduino("G28 X Y");
+        emit Sig_toarduino("M4 P0");
+        isStop = false;
         //发送开始打印指令
         _opened = false;
     }
@@ -434,6 +462,8 @@ void iPainter::on_btnPrintC_clicked()
     newGcode->loadImage("current.png");
     newGcode->outSvg();
     newGcode->outGcode();
+    //50   34
+     gcodes->filterGcode("out.gcode",QPointF(0,0),QPointF(50,35),"print.gcode");
     Disable_User_Waiting_Cursor();
     QMessageBox::information(this,"Notice","Image convert finish，pree OK to begin ...");
 //        ui->label->setText("Process finsh!");
@@ -441,9 +471,64 @@ void iPainter::on_btnPrintC_clicked()
 
 
     //发送gcode
-    emit Sig_file("print.gcode");
+//    emit Sig_file("print.gcode");
+    sender->reset();
+    sender->SetTargetFile("print.gcode");
+    emit Sig_toarduino("G28 X Y");
+    isStop = false;
     //发送开始打印指令
     _opened = false;
-    QString p = "Wi458.589";
-    qDebug()<<p.right(p.length()-2);
+
 }
+
+void iPainter::AddToSender()
+{
+
+    while(1)
+    {
+        toSend = sender->readOneLine();
+        if(toSend.startsWith(";"))
+        {
+
+        }
+        else
+        {
+            break;
+        }
+
+    }
+    if(toSend == "end")
+    {
+        on_cancle_clicked();
+
+    }
+
+}
+void iPainter::ReadArduino(QString cmd)
+{
+    QString ba = cmd;
+    if(!ba.isEmpty())
+    {
+        QString le = ba;
+        qDebug()<<le;
+        if(le.startsWith("start"))
+        {
+            QMessageBox::information(this,tr("Notice"),tr("Serial conected!"));
+
+        }
+        else if(le.startsWith("oMG"))
+        {
+            if(!isStop)
+            {
+                AddToSender();
+                emit Sig_toarduino(toSend);
+                // updae the progress
+            }
+        }
+        else if(!isStop)
+        {
+            emit Sig_toarduino(toSend);
+        }
+    }
+}
+

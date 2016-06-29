@@ -185,6 +185,7 @@ void PicEdit::ExportGrayPix(QImage src)
         QMessageBox::critical(NULL, tr("提示"), tr("无法创建文件"));
         return ;
     }
+
     QTextStream out(&file);
     QImage image = src;
     double scale=0.1;

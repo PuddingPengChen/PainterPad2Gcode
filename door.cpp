@@ -128,6 +128,7 @@ void Door::sendCommand(QString cmd)       //发送指令
     bytesWritten = 0;
     outBlock.resize(0);
 }
+
 void Door::sendFile(QString files)
 {
     fileName = files;

@@ -8,6 +8,12 @@
 #include <QFont>
 #include <vector>
 
+class draw_segment
+{
+public:
+    std::vector<QPoint> _segments;
+};
+
 class PaintArea : public QWidget
 {
     Q_OBJECT
@@ -48,6 +54,9 @@ public:
     void zoomRecover();
     bool getZoom() { return _scaled; }
     void ReSize(int, int);
+
+    std::vector <draw_segment> GetPath();
+    void ClearData();
 
 public slots:
     void clearImage();
@@ -109,6 +118,11 @@ private:
     std::vector<QImage> _redo;
     QRect _select;
     std::vector<QPoint> _fill;
+
+
+    std::vector<draw_segment> path;
+    draw_segment points;
+
     bool _right;
     int mySprayWidth;
     QImage _before_scale;
@@ -116,7 +130,7 @@ private:
     double _size_x;
     double _size_y;
 
-
 };
+
 
 #endif

@@ -12,6 +12,7 @@ Welcom::Welcom(QWidget *parent) :
     mPrinterSettings = new ParentSetting();
     IPDialog = new IPinput();
     doors = new Door();
+    myport = new CPSerialPort();
 
     //IP---->DOOR
     connect(IPDialog,SIGNAL(Sig_ip(QString)),doors,SLOT( connectServer(QString)));
@@ -35,6 +36,16 @@ Welcom::Welcom(QWidget *parent) :
     //DOOR-------->iPainter
     connect(doors,SIGNAL(Sig_PrintNext()),mPainter,SLOT(PrintNext()));
 
+
+    //IPainter---->CPSerialPort
+    connect(mPainter,SIGNAL(Sig_toarduino(QString)),myport,SLOT(WritePort(QString)));
+
+    //CPSerialPort---->IPainter
+    connect(myport,SIGNAL(Sig_GetMessage(QString)),mPainter,SLOT(ReadArduino(QString)));
+
+    //PSetting--->CPSerial
+    connect(mPrinterSettings,SIGNAL(Sig_cmds(QString)),myport,SLOT(WritePort(QString)));
+
     this->setWindowTitle(tr("Make-Block"));
 //    this->setWindowFlags(Qt::FramelessWindowHint);
 }
@@ -57,17 +68,18 @@ void Welcom::showMsg(QString t)
 }
 void Welcom::on_ipaint_clicked()
 {
-    mPainter->show();
+    mPainter->showFullScreen();
 }
 
 void Welcom::on_parentSetting_clicked()         //家长设置
 {
-    mPrinterSettings->show();
+    mPrinterSettings->showFullScreen();
 }
 
 void Welcom::on_connectIP_clicked()
 {
-    IPDialog->show();
+//    IPDialog->show();
+    myport->show();
 //    emit Sig_ip("192.168.10.1");
 }
 

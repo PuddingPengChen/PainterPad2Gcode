@@ -99,7 +99,7 @@ void ParentSetting::on_zHome_clicked()      //Z home
 
 void ParentSetting::on_Home_clicked()       //Home
 {
-    emit Sig_cmds("G28 \n");
+    emit Sig_cmds("G28 X Y\n");
 }
 
 void ParentSetting::on_current_z_clicked()      //current Z
@@ -145,7 +145,7 @@ void ParentSetting::on_huge_clicked()       //10.0mm
 
 void ParentSetting::move(QString axis)
 {
-    QString cmd = tr("G1 %1%2 F4000 \n").arg(axis).arg(steps);
+    QString cmd = tr("G1 %1%2 F4000 ").arg(axis).arg(steps);
     emit Sig_cmds(cmd);
 }
 void ParentSetting::home(QString axis)

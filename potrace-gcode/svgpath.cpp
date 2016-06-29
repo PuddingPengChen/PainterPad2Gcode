@@ -14,7 +14,7 @@ svgPath::svgPath(QObject *parent) :
     QString power = "M4 P"+QString::number(slidervalue)+"\n";
     setLaster(power);
     QString speed = "G90\nM4 P0\nG0 F9000\nM220 S"+QString::number(laserspeed)+"\n";
-//    QString speed = "G90\nG21 \nM4 P0\n";
+//    QString speed = "G90\nG21\nM4 P0\n";
     setHeader(speed);
     setPrintPicWidth(picWidth);
 }

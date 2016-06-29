@@ -230,7 +230,7 @@ private:
 
             for(unsigned int layerNr=0; layerNr<totalLayers; layerNr++)
                 storage.oozeShield[layerNr] = storage.oozeShield[layerNr].offset(-MM2INT(1.0)).offset(MM2INT(1.0));
-            int offsetAngle = tan(60.0*M_PI/180) * config.layerThickness;//Allow for a 60deg angle in the oozeShield.
+            int offsetAngle = tan(60.0*3.1415/180) * config.layerThickness;//Allow for a 60deg angle in the oozeShield.
             for(unsigned int layerNr=1; layerNr<totalLayers; layerNr++)
                 storage.oozeShield[layerNr] = storage.oozeShield[layerNr].unionPolygons(storage.oozeShield[layerNr-1].offset(-offsetAngle));
             for(unsigned int layerNr=totalLayers-1; layerNr>0; layerNr--)

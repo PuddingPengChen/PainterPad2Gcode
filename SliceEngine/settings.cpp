@@ -102,7 +102,7 @@ ConfigSettings::ConfigSettings()
             "M220 S50 \n";
     startCode =
         "G90           ;absolute positioning\n"
-        "M4 P160 \n"
+        "M4 P160\n"
         "G28  X Y\n";
 
 
